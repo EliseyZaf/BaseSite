@@ -1,0 +1,542 @@
+@use 'variables' as *;
+@use 'fonts';
+
+/*
+////////////////////////  MIXINS  ////////////////////////
+*/
+
+@mixin button-styles($bg-color: transparent, $text-color: $color-primary, $radius: null, $width: null, $height: null) {
+  font-family: $font-medium;
+  font-size: $fs-sm;
+  color: $text-color;
+  border: none;
+  font-weight: bold;
+  background-color: $bg-color;
+
+  @if $radius { border-radius: $radius; }
+  @if $width  { width: $width; }
+  @if $height { height: $height; }
+}
+
+@mixin card-overlay($radius) {
+  position: relative;
+  border-radius: $radius;
+  box-shadow: inset 0px 0px 16px rgba(0, 0, 0, 0.15);
+  opacity: 0.8;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+/*
+////////////////////////  SCSS  ////////////////////////
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 1180px;
+  background-color: $color-white;
+  margin: 0 auto;
+}
+
+.header {
+  height: 40px;
+  background-color: $color-white;
+  margin-top: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &_logo {
+    display: flex;
+    align-items: center;
+  }
+
+  &-logo_name {
+    font-family: $font-medium;
+    font-weight: bold;
+    font-size: $fs-md;
+    color: $color-text;
+    margin-left: 11.88px;
+  }
+
+  &_search-txt {
+    width: 320px;
+    height: 25px;
+    border: none;
+    border-bottom: 1px solid $color-text;
+    background-color: transparent;
+    font-family: $font-medium;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      font-size: $fs-sm;
+      color: $color-text-light;
+      font-family: $font-regular;
+    }
+  }
+
+  &_search-btn {
+    @include button-styles(transparent, $color-primary);
+    margin-left: 32px;
+  }
+
+  &_enter-btn {
+    @include button-styles($color-primary, $color-white, $radius-sm, 113px, 38px);
+    margin-right: 11.88px;
+  }
+}
+
+.nav-selector-div {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  margin-top: 48px;
+  height: 42px;
+}
+
+.nav-selector {
+  font-family: $font-medium;
+  margin-left: 12px;
+  border: none;
+  text-decoration: none;
+  font-size: $fs-2xl;
+  background-color: transparent;
+  color: $color-black;
+  padding-bottom: 9px;
+
+  &:hover {
+    margin-left: 12px;
+    color: $color-red;
+    border: none;
+    border-bottom: 3px solid $color-red;
+    padding-bottom: 6px;
+    font-size: $fs-2xl;
+    background-color: transparent;
+  }
+
+  &-a {
+    font-family: $font-medium;
+    margin-left: 12px;
+    color: $color-red;
+    border: none;
+    text-decoration: underline 5px;
+    font-size: $fs-2xl;
+    background-color: transparent;
+  }
+}
+
+.movie-h {
+  font-family: $font-medium;
+  font-size: $fs-xl;
+  color: $color-text;
+  margin-bottom: 16px;
+}
+
+.ganres-h {
+  font-family: $font-medium;
+  font-size: $fs-xl;
+  color: $color-text;
+  margin-bottom: 16px;
+  margin-top: 16px;
+}
+
+.ganres-cards {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ganres-items {
+  width: 280px;
+  height: 208px;
+  font-size: $fs-3xl;
+  background: $gradient-g1;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  @include card-overlay($radius-md);
+}
+
+.ganres-item-e {
+  font-size: $fs-3xl;
+}
+
+.ganres-item-h {
+  font-size: $fs-xl;
+  color: $color-white;
+  position: absolute;
+  top: 160px;
+  font-family: $font-regular;
+}
+
+// Модификаторы градиентов
+.g1 {
+  background: $gradient-g1;
+}
+
+.g2 {
+  background: $gradient-g2;
+}
+
+.g3 {
+  background: $gradient-g3;
+}
+
+.g4 {
+  background: $gradient-g4;
+}
+
+.new {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.new-item {
+  width: 280px;
+  position: relative;
+
+  &-img {
+    border-radius: $radius-lg;
+    margin-bottom: 16px;
+  }
+
+  &-p {
+    font-family: $font-regular;
+    font-size: $fs-lg;
+
+    &-desc {
+      width: 280px;
+      height: 370px;
+      background-color: $color-overlay;
+      font-size: $fs-sm;
+      color: $color-white;
+      border-radius: $radius-lg;
+      padding: 16px;
+      line-height: 140%;
+      box-sizing: border-box;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+
+  &:hover .new-item-p-desc {
+    opacity: 1;
+    cursor: pointer;
+  }
+}
+
+.footer {
+  background-color: $color-footer-bg;
+  margin-top: 72px;
+
+  &-cotanier {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    margin-left: 130px;
+  }
+
+  &-info {
+    margin-left: 40px;
+
+    &-p {
+      color: $color-text;
+      font-size: $fs-sm;
+      font-family: $font-regular;
+
+      &:nth-child(2) {
+        margin: 6px 0 10px 0;
+      }
+    }
+
+    &-a {
+      color: $color-link;
+      font-size: $fs-sm;
+      font-family: $font-regular;
+      text-decoration: none;
+    }
+  }
+}
+
+/*
+/////////////////////////// MEDIA ///////////////////////////
+ */
+
+@media (max-width: 900px) {
+  .container {
+    width: 390px;
+    background-color: $color-white;
+    margin: 0 auto;
+    align-content: center;
+    align-items: center;
+  }
+
+  header, main, footer {
+    margin-left: 3px;
+  }
+
+  .logo-img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .header {
+    height: 40px;
+    background-color: $color-white;
+    margin-top: 11px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &_logo {
+      display: flex;
+      align-items: center;
+    }
+
+    &-logo_name {
+      font-family: $font-medium;
+      font-weight: bold;
+      font-size: $fs-md-m;
+      color: $color-text;
+      margin-left: 4px;
+    }
+
+    &_search-txt {
+      width: 126px;
+      height: 30px;
+      border: none;
+      border-bottom: 1px solid $color-text;
+      background-color: transparent;
+      font-family: $font-medium;
+
+      &:focus {
+        outline: none;
+      }
+
+      &::placeholder {
+        font-size: $fs-sm-m;
+        color: $color-text-light;
+        font-family: $font-regular;
+      }
+    }
+
+    &_search-btn {
+      @include button-styles(transparent, $color-primary);
+      font-size: $fs-sm-m;
+      margin-left: 11px;
+    }
+
+    &_enter-btn {
+      @include button-styles($color-primary, $color-white, $radius-sm, 69px, 24px);
+      font-size: $fs-sm-m;
+      margin-right: 4px;
+    }
+  }
+
+  .nav-selector-div {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin-top: 16px;
+    height: 42px;
+  }
+
+  .nav-selector {
+    font-family: $font-medium;
+    margin-left: 4px;
+    border: none;
+    text-decoration: none;
+    font-size: $fs-2xl-m;
+    background-color: transparent;
+    color: $color-black;
+    padding-bottom: 3px;
+
+    &:hover {
+      margin-left: 4px;
+      color: $color-red;
+      border: none;
+      border-bottom: 2px solid $color-red;
+      padding-bottom: 2px;
+      font-size: $fs-2xl-m;
+      background-color: transparent;
+    }
+
+    &-a {
+      font-family: $font-medium;
+      margin-left: 4px;
+      color: $color-red;
+      border: none;
+      text-decoration: underline 3px;
+      font-size: $fs-2xl-m;
+      background-color: transparent;
+    }
+  }
+
+  .movie-h {
+    font-family: $font-medium;
+    font-size: $fs-xl-m;
+    color: $color-text;
+    margin-bottom: 5px;
+  }
+
+  .ganres-h {
+    font-family: $font-medium;
+    font-size: $fs-xl-m;
+    color: $color-text;
+    margin-bottom: 5px;
+    margin-top: 5px;
+  }
+
+  .ganres-cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .ganres-items {
+    width: 167px;
+    height: 124px;
+    font-size: $fs-3xl-m;
+    border-radius: $radius-md;
+    position: relative;
+    background: $gradient-g1;
+    box-shadow: inset 0px 0px 16px rgba(0, 0, 0, 0.15);
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    opacity: 0.8;
+    flex: 1 1 167px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .ganres-item-e {
+    font-size: $fs-3xl-m;
+  }
+
+  .ganres-item-h {
+    font-size: $fs-xl-m;
+    color: $color-white;
+    position: absolute;
+    top: 95px;
+    font-family: $font-regular;
+  }
+
+  // Модификаторы градиентов
+  .g1 {
+    background: $gradient-g1;
+  }
+
+  .g2 {
+    background: $gradient-g2;
+  }
+
+  .g3 {
+    background: $gradient-g3;
+  }
+
+  .g4 {
+    background: $gradient-g4;
+  }
+
+  .new {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .new-item {
+    width: 93px;
+    position: relative;
+    flex-wrap: wrap;
+    flex: 1 1 186px;
+    margin-bottom: 5px;
+
+    &-img {
+      border-radius: $radius-lg;
+      margin-bottom: 5px;
+
+      width: 186px;
+      height: 246px;
+    }
+
+    &-p {
+      font-family: $font-regular;
+      font-size: $fs-lg-m;
+
+      &-desc {
+        width: 186px;
+        height: 246px;
+        background-color: $color-overlay;
+        font-size: $fs-sm-m;
+        color: $color-white;
+        border-radius: $radius-lg;
+        padding: 3px;
+        line-height: 140%;
+        box-sizing: border-box;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        right: 7px;
+      }
+    }
+
+    &:hover .new-item-p-desc {
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
+
+  .footer {
+    background-color: $color-footer-bg;
+    margin-top: 30px;
+    margin-bottom: 20px;
+
+    &-cotanier {
+      height: 120px;
+      display: flex;
+      align-items: center;
+      margin-left: 0px;
+    }
+
+    &-info {
+      margin-left: 14px;
+
+      &-p {
+        color: $color-text;
+        font-size: $fs-sm-m;
+        font-family: $font-regular;
+
+        &:nth-child(2) {
+          margin: 6px 0 10px 0;
+        }
+      }
+
+      &-a {
+        color: $color-link;
+        font-size: $fs-sm-m;
+        font-family: $font-regular;
+        text-decoration: none;
+      }
+    }
+  }
+}

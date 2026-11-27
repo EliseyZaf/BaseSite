@@ -1,0 +1,11 @@
+@use 'variables' as *;
+
+@font-face {
+  font-family: $font-medium;
+  src: url("../font/Rubik-Medium.ttf");
+}
+
+@font-face {
+  font-family: $font-regular;
+  src: url("../font/Rubik-Regular.ttf");
+}

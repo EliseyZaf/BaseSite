@@ -1,0 +1,49 @@
+// ===== Цвета =====
+$color-text: #333333;
+$color-text-light: #828282;
+$color-white: #ffffff;
+$color-black: black;
+$color-primary: #E5261E;
+$color-primary-hover: #CC221B;
+$color-red: red;
+$color-link: #1F4766;
+$color-overlay: rgba(51, 51, 51, 0.6);
+$color-overlay-dark: rgba(51, 51, 51, 0.8);
+$color-bg-gray: #F2F2F2;
+$color-scroll-thumb: #BDBDBD;
+
+// ===== Шрифты =====
+$font-medium: RubicM;
+$font-regular: RubicR;
+
+// ===== Размеры шрифтов =====
+$fs-sm: 16px;
+$fs-md: 18px;
+$fs-lg: 20px;
+$fs-xl: 24px;
+$fs-2xl: 30px;
+$fs-3xl: 48px;
+$fs-title: 28px;
+
+$fs-sm-m: 8px;
+$fs-md-m: 9px;
+$fs-lg-m: 10px;
+$fs-xl-m: 11px;
+$fs-2xl-m: 13px;
+$fs-3xl-m: 19px;
+$fs-title-m: 12px;
+
+// ===== Радиусы =====
+$radius-sm: 4px;
+$radius-md: 6px;
+$radius-lg: 8px;
+
+// ===== Градиенты =====
+$gradient-g1: linear-gradient(127.83deg, #F2C94C 8.44%, #F29A4A 91.36%);
+$gradient-g2: linear-gradient(127.83deg, #F2994A 8.44%, #EB5757 91.36%);
+$gradient-g3: linear-gradient(127.83deg, #56CCF2 8.44%, #2F80ED 91.36%);
+$gradient-g4: linear-gradient(127.83deg, #828282 8.44%, #333333 91.36%);
+
+// Алиасы для совместимости с auth.scss и style.scss
+$fs-base: $fs-sm;                 // 16px
+$color-footer-bg: $color-bg-gray; // #F2F2F2
